@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TOBA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/stylesheet.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/media-queries.css">
+        <!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div id="nav">
+                <div id="hamburger-btn" onclick="flyout()">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <h1 id="title">TOBA</h1>
+                <ul>
+                    <li><a href='login.html' target='#'>Login</a></li>
+                    <li><p>|</p></li>
+                </ul>
+            </div>            
+            <div id="hidden-menu">
+                <div id="nav-col">
+                    <ul>
+                        <li><a href='new-customer.jsp' target='_self'>Enroll</a></li>
+                        <li><a href='#' target='_self'>Schedule an appointment</a></li>
+                        <li><a href='#' target='_self'>Get the app</a></li>
+                        <li><a href='#' target='_self'>Help</a></li>                    
+                        <li><a href='#' target='_self'>Find a location</a></li>
+                        <li><a href='#' target='_self'>Contact Us</a></li>
+                        <li><a href='#' target='_self'>Privacy &amp  Security</a></li>
+                        <li><a href='#' target='_self'>Small Business</a></li>
+                        <li><a href='#' target='_self'>Wealth Management</a></li>
+                        <li><a href='#' target='_self'>Businesses &amp Institutions</a></li>
+                        <li><a href='#' target='_self'>About Us</a></li>
+                    </ul>
+                </div>
+            </div>            
+        </header>
+        
+        <div id="wrapper">
+            <div id="main-content">
+                <div id='form-container'>
+                    <form id="login" class="form-style" method="post" action="LoginServlet">
+                        <h1>Login...</h1>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" placeholder="username..." required>
+                        <label for="password">Password:</label>
+                        <input type="text" id="password" name="password" placeholder="password..." required>
+                        <input id="login-form-btn-submit" class="btn-style" type="submit" value="Login" name="submit">
+                    </form>
+                    <ul>
+                        <li><a href='#' target='#'>Forgot login information?</a></li>
+                        <li><a href='new-customer.jsp' target='#'>Enroll</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+	<footer id="footer">
+            <p>&copy; 2019 TOBA. All Rights Reserved.</p>
+        </footer>
+
+        <script src="js/flyout.js"></script>  
+    </body>
+</html>

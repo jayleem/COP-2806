@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box
+}
+
+* body,
+html {
+    background-color: #FFF
+}
+
+#wrapper {
+    background-color: #FFF;
+    margin: 20px auto;
+    width: 80%;
+    height: auto;
+    overflow: hidden
+}
+
+#nav {
+    width: 100%;
+    height: 65px;
+    background-color: #FFF;
+    border-bottom: #e4e4e4 1px solid;
+    text-align:center
+}
+
+#nav h1 {
+    font-size:3em;
+    float:left;
+    margin:10px
+}
+
+#nav ul {
+    float:right;
+    margin:22px;
+    margin-right:10px;
+    font-size:1.5em;
+    display:inline
+}
+
+#nav li, #nav li a {
+    display: inline-block;
+    text-decoration: none;
+    color:#42865F
+}
+
+#form-container li {
+    display:inline;
+    font-size:.8em;
+    margin-right:1em;
+    padding: 0 20px
+}
+.form-style {
+    background-color: #FFF;
+    height: auto;
+    width: 100%;
+    padding: 20px 20px;
+    margin-bottom: 10px
+}
+.form-style h1 {
+    font-size: 2em
+}
+
+.btn-style {
+    color: #FFF;
+    background-color: #42865F;
+    border: #6ca384 2px solid;
+    border-radius: 6px;
+    font-size: 1em;
+    text-decoration: none;
+    padding: 8px 2px;
+    width:75px;
+    box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.25)
+}
+
+#login input {
+    display:inline-block;
+    margin:1em 0
+}
+
+#sign-up label {
+    display:block;
+    margin:.5em 0;
+}
+
+#sign-up-form-btn-submit {
+    margin:.5em 0
+}
+
+#err {
+    margin:1em 0;
+    color:red;
+    font-style:italic
+}
+
+#main-content p {
+    line-height:1.5em;
+    margin-bottom: 1em
+}
+
+/* Hamburger button */
+.line1,
+.line2,
+.line3 {
+    margin: 4px auto;
+    width: 30px;
+    height: 3px;
+    background-color: #42865F
+}
+
+#hamburger-btn {
+    float:right;
+    margin:24px 0;
+    margin-right:20px;
+    cursor: pointer
+}
+
+/* Popout Nav */
+#hidden-menu {
+    background-color:#e4e4e4;
+    text-align:left;
+    width:100%;
+    display:none
+}
+
+#nav-col {
+    width: 100%; 
+    padding: 1em
+}
+
+#hidden-menu li {
+    margin:10px
+}
+
+#hidden-menu li a {
+    text-decoration:none;
+    color:#000
+}
+
+#hidden-menu li a:hover {
+    text-decoration:underline;
+    font-weight:bold;
+    color:#000
+}
+
+#footer {
+    text-align:center;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:60px;
+    background-color:#e4e4e4
+}
+
+#footer p {
+    margin:1em 0;
+}

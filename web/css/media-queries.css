@@ -1,0 +1,29 @@
+/*Mobile first method for my media queries*/
+@media only screen and (min-width: 720px) {
+	
+}
+
+/*Probabaly would be better to do this in jQuery*/
+@media only screen and (min-width: 500px) {
+	
+}
+
+@media only screen and (min-width: 600px) {
+	
+}
+
+@media only screen and (min-width: 800px) {
+	
+}
+
+@media only screen and (min-width: 900px) {
+	
+} 
+
+@media only screen and (min-width: 1024px) {
+	
+}
+
+@media (orientation: landscape) {
+/*Any rules here negatively impact the overall design*/
+}
