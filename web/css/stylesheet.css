@@ -23,10 +23,12 @@ html {
     text-align:center
 }
 
-#nav h1 {
+#title {
     font-size:3em;
     float:left;
-    margin:10px
+    margin:10px;
+    text-decoration: none;
+    color: #000
 }
 
 #nav ul {
@@ -69,7 +71,8 @@ html {
     text-decoration: none;
     padding: 8px 2px;
     width:75px;
-    box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.25)
+    box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.25);
+    cursor: pointer
 }
 
 #login input {
@@ -140,6 +143,53 @@ html {
     text-decoration:underline;
     font-weight:bold;
     color:#000
+}
+
+#ud-container {
+    background-color:#E8E8E8;
+    padding:10px;
+    width:400px;
+    float:left;
+}
+
+#ud-header {
+    background-color:#BEBEBE;
+    width:400px;
+    height:40px;
+    margin:0 auto;
+    margin-top:1em;
+    float:left;
+    padding:10px
+}
+
+#tb-ud {
+    width: 350px;
+    border-spacing: 10px;
+    border-collapse: separate
+}
+
+#tb-ud th,
+#tb-ud td {
+    width: 100px;
+    overflow: hidden;
+    margin-bottom:1em;
+    text-align:right;
+}
+
+#tb-ud td + td
+{
+    text-align:left;
+    border: 1px solid #BEBEBE;
+    background-color: #FFF;
+    width:340px;
+    height:25px;
+    padding-left:.25em
+}
+.header-style-big-bold {
+    font-size: 1.5em;
+    color:black;
+    margin: 0 auto;
+    line-height: 1em;
 }
 
 #footer {
