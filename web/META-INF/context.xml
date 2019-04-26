@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/TOBA"/>
+<Context path="/TOBA">
+  <Resource name="jdbc/userdb"  auth="Container" type="javax.sql.DataSource"
+   username="root" password="abbypi88" driverClassName="com.mysql.jdbc.Driver"
+   url="jdbc:mysql:/localhost:3306/userdb?zeroDateTimeBehavior=convertToNull [root on Default schema]" maxActive="15" maxIdle="3"/>
+</Context>

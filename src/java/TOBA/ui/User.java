@@ -4,8 +4,20 @@ package TOBA.ui;
  *
  * @author Jason
  */
-public class User implements java.io.Serializable {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userID;
     private String firstName = null;
     private String lastName = null;
     private String phone = null;
@@ -16,6 +28,19 @@ public class User implements java.io.Serializable {
     private String email = null;
     private String userName = null;
     private String password = null;
+
+    public User() {
+        firstName = "";
+        phone = "";
+        phone = "";
+        address = "";
+        city = "";
+        state = "";
+        zipcode = "";
+        email = "";
+        userName = "";
+        password = "";
+    }
 
     public User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email, String userName, String password) {
         this.firstName = firstName;
@@ -28,6 +53,14 @@ public class User implements java.io.Serializable {
         this.email = email;
         this.userName = userName;
         this.password = password;
+    }
+
+    public void setUserId(Long id) {
+        this.userID = id;
+    }
+
+    public Long getUserId() {
+        return userID;
     }
 
     public String getFirstName() {
@@ -69,7 +102,7 @@ public class User implements java.io.Serializable {
     public String getPassword() {
         return password;
     }
-
+    
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

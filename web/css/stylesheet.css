@@ -10,9 +10,9 @@ html {
 #wrapper {
     background-color: #FFF;
     margin: 20px auto;
-    width: 80%;
+    width: 85%;
     height: auto;
-    overflow: hidden
+    overflow: hidden;
 }
 
 #nav {
@@ -70,7 +70,7 @@ html {
     font-size: 1em;
     text-decoration: none;
     padding: 8px 2px;
-    width:75px;
+    width:100px;
     box-shadow: inset 0px -5px 5px rgba(0, 0, 0, 0.25);
     cursor: pointer
 }
@@ -147,9 +147,7 @@ html {
 
 #ud-container {
     background-color:#E8E8E8;
-    padding:10px;
     width:400px;
-    float:left;
 }
 
 #ud-header {
@@ -157,7 +155,6 @@ html {
     width:400px;
     height:40px;
     margin:0 auto;
-    margin-top:1em;
     float:left;
     padding:10px
 }
@@ -165,7 +162,7 @@ html {
 #tb-ud {
     width: 350px;
     border-spacing: 10px;
-    border-collapse: separate
+    border-collapse: separate;
 }
 
 #tb-ud th,
@@ -185,23 +182,43 @@ html {
     height:25px;
     padding-left:.25em
 }
+
+#tb-th {
+    background-color: #BEBEBE;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto
+}
+
+#tb-th th,
+#tb-th td {
+    width:50%;
+    overflow: hidden;
+    margin-bottom:1em;
+    text-align: center
+}
+
+#tb-th tr:nth-child(odd) {
+    background-color: #E8E8E8;
+}
+
 .header-style-big-bold {
     font-size: 1.5em;
     color:black;
     margin: 0 auto;
-    line-height: 1em;
+    line-height: 1em
 }
 
 #footer {
     text-align:center;
-    position:fixed;
     bottom:0;
     left:0;
     right:0;
     height:60px;
+    margin-top:10px;
     background-color:#e4e4e4
 }
 
 #footer p {
-    margin:1em 0;
+    padding:1em 0;
 }
