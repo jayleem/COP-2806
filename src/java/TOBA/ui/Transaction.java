@@ -14,6 +14,7 @@ public class Transaction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transId;
+    
     private Double transAmt;
     private String transType;
 
