@@ -63,12 +63,14 @@
     <!--ADMIN PAGE CONFIG-->
     <login-config>
         <auth-method>FORM</auth-method>
+        <realm-name>Form-Based Authentication</realm-name>
         <form-login-config>
             <form-login-page>/WEB-INF/admin/login.html</form-login-page>
             <form-error-page>/WEB-INF/admin/login-error.html</form-error-page>
         </form-login-config>
     </login-config>
     <security-constraint>
+        <display-name>SecurityConstraint1</display-name>
         <web-resource-collection>
             <web-resource-name>admin</web-resource-name>
             <description/>
@@ -77,6 +79,10 @@
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <security-role>
         <description>admin</description>
