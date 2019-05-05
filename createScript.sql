@@ -25,25 +25,3 @@ CREATE TABLE IF NOT EXISTS tobadb.UserRole (
 );
 
 INSERT INTO tobadb.UserRole VALUES ('admin', 'sesame'); 
-
-CREATE TABLE IF NOT EXISTS tobadb.Users (
-
-);
-
-CREATE TABLE tobadb.Users (
-    UserID int NOT NULL AUTO_INCREMENT,
-    FirstName varchar(255) NOT NULL,
-    LastName varchar(255) NOT NULL,
-    Phone varchar(255) NOT NULL,
-    Address varchar(255) NOT NULL,
-    City varchar(255) NOT NULL,
-    `State` varchar(255) NOT NULL,
-    ZipCode varchar(255) NOT NULL,
-    Email varchar(255) NOT NULL,
-    UserName varchar(255) NOT NULL,
-    Password varchar(255) NOT NULL,
-
-    PRIMARY KEY (UserID)
-); 
-
-INSERT INTO tobadb.Users VALUES ('1', 'jsmith', '', '', '', '', '', '', '', 'jsmith', 'letmein'); 
