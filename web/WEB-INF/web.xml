@@ -40,11 +40,6 @@
         <servlet-name>ReportsServlet</servlet-name>
         <url-pattern>/ReportsServlet</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
     <!--ERROR HANDLING -->
     <error-page>
         <error-code>404</error-code>
@@ -69,7 +64,7 @@
             <url-pattern>/admin/*</url-pattern>
         </web-resource-collection>
         
-        <!-- Authorize the programmer and service roles -->
+        <!-- Authorize the admin roles -->
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>        
