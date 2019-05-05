@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String username = request.getParameter("username");
 
-		System.out.println("User Exists: " + UserDB.userExists(username));
 		if (UserDB.userExists(username)) {
 			User user = UserDB.selectUser(username);
 			session.setAttribute("user", user);
