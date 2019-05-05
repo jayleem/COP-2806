@@ -4,13 +4,13 @@
               maxActive="100" maxIdle="30" maxWaith="10000"
               username="root" password="abbypi88" 
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/tobadb?autoReconnect=true"
-              logAbandoned="true" removeAbandoned="true"
+              url="jdbc:mysql://localhost:3306/tobadb"
               removeAbandonedTimeout="60" type="javax.sql.DataSource"/>
               
   
     <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
            dataSourceName="jdbc/tobadb" localDataSource="true"
            userTable="UserPass" userNameCol="UserName" userCredCol="Password"
-           userRoleTable="UserRole" roleNameCol="RoleName"/>  
+           userRoleTable="UserRole" roleNameCol="RoleName">
+    </Realm> 
 </Context>
