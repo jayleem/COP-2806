@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/TOBA">
-    <Resource name="jdbc/tobadb"  auth="Container" type="javax.sql.DataSource"
-              username="root" password="abbypi88" driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/tobadb?useSSL=false" maxActive="15" maxIdle="3"/>
+    <Resource name="jdbc/tobadb"  auth="Container" 
+              maxActive="100" maxIdle="30" maxWaith="10000"
+              username="root" password="abbypi88" 
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/tobadb?autoReconnect=true"
+              logAbandoned="true" removeAbandoned="true"
+              removeAbandonedTimeout="60" type="javax.sql.DataSource"/>
+              
   
     <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
            dataSourceName="jdbc/tobadb" localDataSource="true"
