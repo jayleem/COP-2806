@@ -7,7 +7,10 @@ import java.util.Random;
 import java.util.Base64;
 
 public class PWUtil {
-        
+    
+    /*  This code uses SHA-256. If this algorithm isn't available to you,
+        you can try a weaker level of encryption such as SHA-128.
+    */    
     public static String hashPassword(String password)
             throws NoSuchAlgorithmException {        
         MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -69,7 +72,7 @@ public class PWUtil {
                     + hashAndSaltPassword("sesame"));            
         } catch (NoSuchAlgorithmException ex) {
             System.out.println(ex);
-    }
+        }
         
         try {
             checkPasswordStrength("sesame1776");
@@ -78,5 +81,4 @@ public class PWUtil {
             System.out.println(e.getMessage());
         }        
     }
-    
 }
