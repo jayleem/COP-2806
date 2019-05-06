@@ -31,11 +31,11 @@ public class NewCustomerServlet extends HttpServlet {
         String zipcode = request.getParameter("zipcode");
         String email = request.getParameter("email");
         String userName = "";
-        String password = "";
+        String password = "welcome1";//the default password
 
         //Variables for hashing/salting password
         String hashedPassword = "";
-        String salt = "";
+        String salt = PWUtil.getSalt();
         String saltedAndHashedPassword = "";
 
         //Validate parameters
@@ -51,28 +51,32 @@ public class NewCustomerServlet extends HttpServlet {
             url = "/new-customer.jsp";
         } else {
             url = "/success.jsp";
-            User user = new User(firstName, lastName, telephone, address, city, state, zipcode, email, userName, password, salt); //new user object
+            //Create new user and account objects
+            User user = new User(firstName, lastName, telephone, address, city, state, zipcode, email, userName, password, salt);
+            Account account = new Account(user, 25.0);
 
             //Hash and salt the password before inserting into DB
+            String saltedPass = user.getPassword() + salt;
             try {
-                salt = PWUtil.getSalt();
-                saltedAndHashedPassword = PWUtil.hashAndSaltPassword(password, salt);
-
+                user.setPassword(PWUtil.hashPassword(saltedPass));
             } catch (NoSuchAlgorithmException ex) {
                 hashedPassword = ex.getMessage();
                 saltedAndHashedPassword = ex.getMessage();
             }
-            user.setUserName(firstName + zipcode);
-            user.setPassword(saltedAndHashedPassword);
-            user.setSalt(salt);            
 
-            UserDB.insert(user);//insert user into database table
-            
+            //Set the users username
+            user.setUserName(firstName + zipcode);
+            user.setSalt(salt);
+
+            //Insert the newly created user and account objects into their respective databases
+            UserDB.insert(user);
+            AccountDB.insert(account);
+
+            //Set the current sessions user and account attributes
             session.setAttribute("user", user);
-            
-            user.setPassword("welcome1");
+            session.setAttribute("account", account);
         }
-        
+
         request.setAttribute("message", message);
         request.getRequestDispatcher(url).forward(request, response);
     }

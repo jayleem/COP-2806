@@ -19,20 +19,31 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
 
-        String url = "/index.jsp";
         HttpSession session = request.getSession();
+        
+        //set default url
+        String url = "/index.jsp";
 
+        // get parameters from the request
         String password = request.getParameter("password");
         String username = request.getParameter("username");
 
+        // hash and salt password
+        String hashedPassword = "";
+        String salt = "";
         String saltedAndHashedPassword = "";
 
         if (UserDB.userExists(username)) {
             User user = UserDB.selectUser(username);
 
             try {
-                String salt = user.getSalt();
-                saltedAndHashedPassword = PWUtil.hashAndSaltPassword(password, salt);
+                salt = user.getSalt();
+                String saltedPass = password + salt;                
+                saltedAndHashedPassword = PWUtil.hashPassword(saltedPass);               
+                System.out.println(salt);
+                System.out.println(saltedPass);
+                System.out.println(saltedAndHashedPassword);
+                
             } catch (NoSuchAlgorithmException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -41,8 +52,14 @@ public class LoginServlet extends HttpServlet {
             } else {
                 url = "/login-failure.jsp";
             }
+            //Set session attribute
             session.setAttribute("user", user);
-            
+
+            //Set request attributes
+            request.setAttribute("hashedPassword", hashedPassword);
+            request.setAttribute("salt", salt);
+            request.setAttribute("saltedAndHashedPassword", saltedAndHashedPassword);
+
         } else {
             url = "/login-failure.jsp";
             response.setStatus(400);
@@ -50,6 +67,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         getServletContext()
-                .getRequestDispatcher(url).forward(request, response);
+            .getRequestDispatcher(url)
+            .forward(request, response);
     }
 }
