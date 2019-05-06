@@ -1,6 +1,7 @@
 package TOBA.ui;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,28 +16,40 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html");
-		String url = "/index.jsp";
-		HttpSession session = request.getSession();
+            throws ServletException, IOException {
+        response.setContentType("text/html");
 
-		String password = request.getParameter("password");
-		String username = request.getParameter("username");
+        String url = "/index.jsp";
+        HttpSession session = request.getSession();
 
-		if (UserDB.userExists(username)) {
-			User user = UserDB.selectUser(username);
-			session.setAttribute("user", user);
-			if (password.equals(user.getPassword()) && username.equals(user.getUserName())) {
-				url = "/account-activity.jsp";
+        String password = request.getParameter("password");
+        String username = request.getParameter("username");
 
-			} else {
-				url = "/login-failure.jsp";
-				response.setStatus(400);
-				session.invalidate();
-			}
-		}else{
-			response.setStatus(400);
-		}
-		getServletContext().getRequestDispatcher(url).forward(request, response);
-	}
+        String saltedAndHashedPassword = "";
+
+        if (UserDB.userExists(username)) {
+            User user = UserDB.selectUser(username);
+
+            try {
+                String salt = user.getSalt();
+                saltedAndHashedPassword = PWUtil.hashAndSaltPassword(password, salt);
+            } catch (NoSuchAlgorithmException ex) {
+                System.out.println(ex.getMessage());
+            }
+            if (user.getPassword().equals(saltedAndHashedPassword)) {
+                url = "/account-activity.jsp";
+            } else {
+                url = "/login-failure.jsp";
+            }
+            session.setAttribute("user", user);
+            
+        } else {
+            url = "/login-failure.jsp";
+            response.setStatus(400);
+            session.invalidate();
+        }
+
+        getServletContext()
+                .getRequestDispatcher(url).forward(request, response);
+    }
 }

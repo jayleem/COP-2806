@@ -17,7 +17,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userID;    
+    private Long userID;
     private String firstName = null;
     private String lastName = null;
     private String phone = null;
@@ -28,6 +28,7 @@ public class User implements Serializable {
     private String email = null;
     private String userName = null;
     private String password = null;
+    private String salt = null;
 
     public User() {
         firstName = "";
@@ -40,9 +41,10 @@ public class User implements Serializable {
         email = "";
         userName = "";
         password = "";
+        salt = "";
     }
 
-    public User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email, String userName, String password) {
+    public User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email, String userName, String password, String salt) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -53,6 +55,7 @@ public class User implements Serializable {
         this.email = email;
         this.userName = userName;
         this.password = password;
+        this.salt = salt;
     }
 
     public void setUserId(Long id) {
@@ -102,7 +105,11 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-    
+
+    public String getSalt() {
+        return salt;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -141,5 +148,9 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

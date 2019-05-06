@@ -1,6 +1,7 @@
 package TOBA.ui;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * @author Jason
  */
 public class NewCustomerServlet extends HttpServlet {
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Get/Create session
@@ -31,7 +32,12 @@ public class NewCustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String userName = "";
         String password = "";
-        
+
+        //Variables for hashing/salting password
+        String hashedPassword = "";
+        String salt = "";
+        String saltedAndHashedPassword = "";
+
         //Validate parameters
         String message = "";
 
@@ -43,22 +49,28 @@ public class NewCustomerServlet extends HttpServlet {
                 || zipcode.isEmpty() || email.isEmpty()) {
             message = "Please fill out all the form data fields.";
             url = "/new-customer.jsp";
-
         } else {
             url = "/success.jsp";
-            User user = new User(firstName, lastName, telephone, address, city, state, zipcode, email, userName, password); //new user object
-            //Set username and password
-            user.setUserName(firstName+zipcode);
-            user.setPassword("welcome1");
+            User user = new User(firstName, lastName, telephone, address, city, state, zipcode, email, userName, password, salt); //new user object
+
+            //Hash and salt the password before inserting into DB
+            try {
+                salt = PWUtil.getSalt();
+                saltedAndHashedPassword = PWUtil.hashAndSaltPassword(password, salt);
+
+            } catch (NoSuchAlgorithmException ex) {
+                hashedPassword = ex.getMessage();
+                saltedAndHashedPassword = ex.getMessage();
+            }
+            user.setUserName(firstName + zipcode);
+            user.setPassword(saltedAndHashedPassword);
+            user.setSalt(salt);            
+
+            UserDB.insert(user);//insert user into database table
             
             session.setAttribute("user", user);
             
-            UserDB.insert(user);//insert user into database table
-            
-            Account account = new Account(user, 25.00);  //new account object 
-            session.setAttribute("account", account);
-            
-            AccountDB.insert(account);//insert user into database table
+            user.setPassword("welcome1");
         }
         
         request.setAttribute("message", message);
