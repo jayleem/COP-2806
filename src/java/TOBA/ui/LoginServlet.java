@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
 
         HttpSession session = request.getSession();
-        
+
         //set default url
         String url = "/index.jsp";
 
@@ -37,13 +37,29 @@ public class LoginServlet extends HttpServlet {
             User user = UserDB.selectUser(username);
 
             try {
-                salt = user.getSalt();
-                String saltedPass = password + salt;                
-                saltedAndHashedPassword = PWUtil.hashPassword(saltedPass);               
-                System.out.println(salt);
-                System.out.println(saltedPass);
-                System.out.println(saltedAndHashedPassword);
+                //Code from ch_17_ex1 CheckPasswordServlet
+                //Not sure if my edits are correct but
+                /*
+                THE PASSWORD USED TO TEST LOGGING IN WAS THE DEFAULT PASSWORD welcome1
                 
+                hashedPassword = PasswordUtil.hashPassword(password);
+                salt = PasswordUtil.getSalt();
+                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password);
+                //I checked the values which were being crated as I kept being redirected to the login-failure.jsp with the code below
+                System.out.println(salt); pemPRgTQheXCh1+O2q4V/lP6mvvcMZHW9KWP7MB5jWE=
+                System.out.println(saltedPass); welcome1pemPRgTQheXCh1+O2q4V/lP6mvvcMZHW9KWP7MB5jWE=
+                System.out.println(hashedPassword); 762c4023e537b455212ddfb101fad0766db4bad68dd50057727f86a54ac54389 <-- Value of the saltedAndHashedPassword stored in the user table
+                System.out.println(saltedAndHashedPassword); cd3b2569562caeaca2aae92d0db39ef46a1b46865eecd7177e21fdd180cd79fe <-- I think the code before hashed it again which results in login failure as the password is not the same
+                 */
+
+                //Modified code from ch_17_ex1 CheckPasswordServlet
+                salt = user.getSalt();
+                String saltedPass = password + salt;
+                saltedAndHashedPassword = PWUtil.hashPassword(saltedPass);
+                System.out.println(salt); //pemPRgTQheXCh1+O2q4V/lP6mvvcMZHW9KWP7MB5jWE=
+                System.out.println(saltedPass); //welcome1pemPRgTQheXCh1+O2q4V/lP6mvvcMZHW9KWP7MB5jWE=
+                System.out.println(saltedAndHashedPassword); //762c4023e537b455212ddfb101fad0766db4bad68dd50057727f86a54ac54389 <-- Value of the saltedAndHashedPassword stored in the user table successful login with "welcome1" as password
+
             } catch (NoSuchAlgorithmException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -67,7 +83,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         getServletContext()
-            .getRequestDispatcher(url)
-            .forward(request, response);
+                .getRequestDispatcher(url)
+                .forward(request, response);
     }
 }
