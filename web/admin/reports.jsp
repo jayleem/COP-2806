@@ -4,14 +4,45 @@
     Author     : Jason
 --%>
 
+<%@page import="TOBA.ui.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>TOBA::Admin reports</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:include page="header.html"></jsp:include>
+            <div id="wrapper">
+                <div id="main-content"> 
+                    <h2>View report of registered users.</h2><br>
+                    <form action="ReportsServlet" method="POST">
+                        <input type="submit" value="View Report" class="button" name="action" /><br>
+                        <input type="submit" value="Hide Report" class="button" name="action" /><br>
+                        <input type="submit" value="Export Report" class="button" name="action" /><br>
+                    </form>
+                <c:if test="${userList != null}">  
+                    <br>
+                    <div id="ur-container">
+                        <table id="tb-ur">
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Date Registered</th>
+                            </tr>
+                            <c:forEach var="user" items="${userList}">
+                                <tr>
+                                    <td><c:out value="${user.userId}" /></td>
+                                    <td><c:out value="${user.userName}" /></td>
+                                    <td><c:out value="${user.dateRegistered}" /></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
+                </c:if>
+            </div>
+        </div>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

@@ -5,11 +5,14 @@ package TOBA.ui;
  * @author Jason
  */
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "users")
@@ -29,19 +32,11 @@ public class User implements Serializable {
     private String userName = null;
     private String password = null;
     private String salt = null;
+    @Temporal(TemporalType.DATE)
+    private Date dateRegistered;
 
     public User() {
-        firstName = "";
-        phone = "";
-        phone = "";
-        address = "";
-        city = "";
-        state = "";
-        zipcode = "";
-        email = "";
-        userName = "";
-        password = "";
-        salt = "";
+
     }
 
     public User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email, String userName, String password, String salt) {
@@ -56,6 +51,7 @@ public class User implements Serializable {
         this.userName = userName;
         this.password = password;
         this.salt = salt;
+        this.dateRegistered = new Date();
     }
 
     public void setUserId(Long id) {
@@ -110,6 +106,10 @@ public class User implements Serializable {
         return salt;
     }
 
+    public Date getDateRegistered() {
+        return dateRegistered;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -152,5 +152,9 @@ public class User implements Serializable {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public void setDateRegistered(Date dateRegisterd) {
+        this.dateRegistered = dateRegisterd;
     }
 }
