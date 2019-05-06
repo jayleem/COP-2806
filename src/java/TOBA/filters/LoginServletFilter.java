@@ -3,7 +3,10 @@ package TOBA.filters;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-
+/**
+ *
+ * TAKEN DIRECTLY FROM THE TEXTBOOK 
+ */
 public class LoginServletFilter implements Filter {
 
     private FilterConfig filterConfig = null;
