@@ -3,10 +3,13 @@ package TOBA.ui;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Transaction implements Serializable {
@@ -14,7 +17,9 @@ public class Transaction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transId;
-    
+    @Temporal(TemporalType.DATE)
+    private Date transDate;
+
     private Double transAmt;
     private String transType;
 
@@ -24,6 +29,7 @@ public class Transaction implements Serializable {
     public Transaction(Double value, String type) {
         this.transAmt = value;
         this.transType = type;
+        this.transDate = new Date();
     }
 
     public Double getTransAmt() {
@@ -40,6 +46,14 @@ public class Transaction implements Serializable {
 
     public void setTransType(String type) {
         this.transType = transType;
+    }
+
+    public void setTransDate(Date transDate) {
+        this.transDate = transDate;
+    }
+
+    public Date getTransDate() {
+        return transDate;
     }
 
     //Method to display balance with correct format

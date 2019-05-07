@@ -39,7 +39,7 @@ public class User implements Serializable {
 
     }
 
-    public User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email, String userName, String password, String salt) {
+    public User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email, String userName, String password ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -50,7 +50,7 @@ public class User implements Serializable {
         this.email = email;
         this.userName = userName;
         this.password = password;
-        this.salt = salt;
+        this.salt = "";
         this.dateRegistered = new Date();
     }
 

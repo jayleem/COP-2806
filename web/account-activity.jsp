@@ -26,10 +26,12 @@
                                 <td>Username: </td>
                                 <td>${user.getUserName()}</td>
                             </tr>
+                            <!--Not sure how to display password when its salted/hashed
                             <tr>
                                 <td>Password:</td>
                                 <td>${user.getPassword()}</td>
                             </tr>
+                            -->
                             <tr>
                                 <td>First name:</td>
                                 <td>${user.getFirstName()}</td>
@@ -68,13 +70,15 @@
                         <div id="ud-header">
                             <h1 class="header-style-big-bold">Your Transaction History:</h1>
                         </div>
-                        <table id="tb-th">
+                        <table id="account-activity">
                             <tr>
-                                <th>Transaction Type</th>
+                                <th>Date</th>
+                                <th>Type</th>
                                 <th>Amount</th>
                             </tr>
                             <c:forEach var="item" items="${account.getList()}">
                                 <tr>
+                                    <td>${item.transDate}</td>
                                     <td>${item.transType}</td>
                                     <td>$${item.getFormattedBalance()}</td>
                                 </tr>

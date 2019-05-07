@@ -148,13 +148,14 @@ html {
 #ud-container {
     background-color:#E8E8E8;
     padding:10px;
-    width:400px;
+    width:80%;
     float:left;
+    overflow: hidden
 }
 
 #ud-header {
     background-color:#BEBEBE;
-    width:400px;
+    width:100%;
     height:40px;
     margin:0 auto;
     margin-top:1em;
@@ -206,11 +207,26 @@ html {
     text-shadow: 1px 1px 1px #fff;
 }
 
+#account-activity {
+    width:auto;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+#account-activity th {
+    padding: 10px 20px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fff;
+}
+#account-activity td {
+    padding: 10px 10px;
+    text-shadow: 1px 1px 1px #fff
+}
+
 .header-style-big-bold {
     font-size: 1.5em;
     color:black;
     margin: 0 auto;
-    line-height: 1em;
+    line-height: 1em
 }
 
 #footer {

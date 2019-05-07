@@ -52,7 +52,7 @@ public class NewCustomerServlet extends HttpServlet {
         } else {
             url = "/success.jsp";
             //Create new user and account objects
-            User user = new User(firstName, lastName, telephone, address, city, state, zipcode, email, userName, password, salt);
+            User user = new User(firstName, lastName, telephone, address, city, state, zipcode, email, userName, password);
             Account account = new Account(user, 25.0);
 
             //Hash and salt the password before inserting into DB

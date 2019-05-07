@@ -6,13 +6,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TOBA::Transaction</title>
+        <title>TOBA::Transactions</title>
     </head>
     <jsp:include page="header.html"></jsp:include>
         <body>        
             <div id="wrapper">
                 <div id="main-content">
-                    <h1>Transaction...</h1>
+                    <h1>Transactions...</h1>
                 </div>
             </div>
         <jsp:include page="footer.jsp"></jsp:include>
