@@ -11,17 +11,17 @@
 CREATE DATABASE IF NOT EXISTS tobadb;
 
 CREATE TABLE IF NOT EXISTS tobadb.UserPass (
-    UserName varchar(15) NOT NULL PRIMARY KEY,
-    Password varchar(15) NOT NULL
+  Username varchar(15) NOT NULL PRIMARY KEY,
+  Password varchar(15) NOT NULL
 );
-
+  
 INSERT INTO tobadb.UserPass VALUES ('admin', 'sesame');
+                          
+CREATE TABLE IF NOT EXISTS tobadb.UserRole (   
+  Username VARCHAR(15) NOT NULL,
+  Rolename VARCHAR(15) NOT NULL,
 
-CREATE TABLE IF NOT EXISTS tobadb.UserRole (
-    UserName varchar(15) NOT NULL,
-    RoleName varchar(15) NOT NULL,
-
-    PRIMARY KEY(UserName, RoleName)
+  PRIMARY KEY (Username, Rolename)
 );
-
-INSERT INTO tobadb.UserRole VALUES ('admin', 'sesame'); 
+  
+INSERT INTO tobadb.UserRole VALUES ('admin', 'admin')

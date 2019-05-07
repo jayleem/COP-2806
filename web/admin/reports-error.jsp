@@ -4,7 +4,6 @@
     Author     : Jason
 --%>
 
-<%@page import="TOBA.ui.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -17,6 +16,7 @@
             <div id="wrapper">
                 <div id="main-content"> 
                     <h2>View report of registered users.</h2><br>
+                    <p class="error">ERROR:No users were found in the database.</h2><br>
                     <form action="${pageContext.request.contextPath}/ReportsServlet" method="POST">
                         <input type="submit" value="View Report" class="button" name="action" /><br>
                         <input type="submit" value="Hide Report" class="button" name="action" /><br>

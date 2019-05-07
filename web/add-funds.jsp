@@ -12,21 +12,26 @@
         <title>TOBA::Add Funds</title>
     </head>
     <body>
-        <jsp:include page="header.html"></jsp:include> 
+        <jsp:include page="${request.contextPath}/header.jsp"></jsp:include> 
             <div id="wrapper">
+            <c:if test="${sessionScope.user != null}">
                 <div id='form-container'>
                     <form id="sign-up" class="form-style" method="post" action="AddFundsServlet">
                         <h1>Account Balance: $${sessionScope.account.getFormattedBalance()}</h1>
-                    <label for="addFunds">Enter Amount:</label>
-                    <input input type="number" step="0.01" id="addFunds" name="addFunds" placeholder="5.00">
+                        <label for="addFunds">Enter Amount:</label>
+                        <input input type="number" step="0.01" id="addFunds" name="addFunds" placeholder="5.00">
 
-                    <p id="err">${message}</p>                    
-                    <div>
-                        <input id="sign-up-form-btn-submit" class="btn-style" type="submit" value="Submit">
-                    </div>      
-                </form>
-            </div>
+                        <p id="err">${message}</p>                    
+                        <div>
+                            <input id="sign-up-form-btn-submit" class="btn-style" type="submit" value="Submit">
+                        </div>      
+                    </form>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.user == null}">
+                <h1>Not Logged In.</h1>
+            </c:if>
         </div>
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="${request.contextPath}/footer.jsp"></jsp:include>
     </body>
 </html>

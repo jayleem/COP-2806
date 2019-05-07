@@ -11,7 +11,7 @@
         <title>TOBA::New Customer Sign-Up</title>
     </head>
     <body>
-        <jsp:include page="header.html"></jsp:include> 
+        <jsp:include page="${request.contextPath}/header.jsp"></jsp:include> 
             <div id="wrapper">
                 <div id='form-container'>
                     <form id="sign-up" class="form-style" method="post" action="NewCustomerServlet">
@@ -47,6 +47,6 @@
                 </form>
             </div>
         </div>
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="${request.contextPath}/footer.jsp"></jsp:include>
     </body>
 </html>

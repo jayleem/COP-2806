@@ -12,7 +12,7 @@
         <title>TOBA::Reset Password</title>
     </head>
     <body>
-        <jsp:include page="header.html"></jsp:include>
+        <jsp:include page="${request.contextPath}/header.jsp"></jsp:include>
             <div id="wrapper">
                 <div id="main-content">    
                     <div id='form-container'>
@@ -27,6 +27,6 @@
                 </div>
             </div>
         </div>
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="${request.contextPath}/footer.jsp"></jsp:include>
     </body>
 </html>

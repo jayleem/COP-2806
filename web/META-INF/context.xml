@@ -2,10 +2,10 @@
 <Context path="/TOBA">
     
     <Resource name="jdbc/tobadb"  auth="Container" 
-              maxActive="100" maxIdle="30" maxWaith="10000"
+              maxActive="100" maxIdle="30" maxWait="10000"
               username="root" password="abbypi88" 
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/tobadb"
+              url="jdbc:mysql://localhost:3306/tobadb?useSSL=false"
               removeAbandonedTimeout="60" type="javax.sql.DataSource">
     </Resource>
            

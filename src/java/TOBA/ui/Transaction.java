@@ -2,7 +2,6 @@ package TOBA.ui;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

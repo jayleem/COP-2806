@@ -10,7 +10,7 @@
         <title>TOBA::Home</title>
     </head>
     <body>
-        <jsp:include page="header.html"></jsp:include>
+        <jsp:include page="${request.contextPath}/header.jsp"></jsp:include>
             <div id="wrapper">
                 <div id="main-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt semper leo et fermentum. Morbi non nulla non nibh congue porta eget sed purus. Sed tincidunt risus magna, non consectetur leo euismod quis. Morbi ultrices placerat efficitur. Fusce laoreet leo sed arcu porttitor, quis imperdiet massa dictum. Nulla auctor feugiat nulla, ut venenatis nunc. Vivamus laoreet eu elit id vestibulum. Cras faucibus iaculis nunc non tempor. Curabitur tristique porta massa lobortis cursus. Morbi feugiat dui id enim lacinia congue id ac ligula. Sed vitae quam non ante efficitur feugiat. Nam risus mauris, rhoncus eu consectetur eu, consectetur venenatis nibh. Pellentesque rhoncus arcu sit amet mauris efficitur tincidunt. Ut id erat tellus. Maecenas venenatis sem lacus, quis tincidunt turpis pulvinar ac.</p>
@@ -20,6 +20,6 @@
                     <p>Integer vel risus vitae dui tincidunt mattis. Morbi mi quam, dictum eu vehicula congue, ultrices et quam. Vestibulum in est metus. Phasellus aliquet quam eu ultricies auctor. Quisque ultricies efficitur tincidunt. Sed eu est sed augue convallis egestas. Donec sed eros eu dolor vulputate feugiat sit amet dictum metus. Curabitur gravida placerat sem ac varius. Aenean finibus eleifend ultricies. In mattis urna eget pharetra semper. Suspendisse potenti.</p>
                 </div>
             </div>
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="${request.contextPath}/footer.jsp"></jsp:include>
     </body>
 </html>
